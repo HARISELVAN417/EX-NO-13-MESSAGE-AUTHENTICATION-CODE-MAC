@@ -1,5 +1,5 @@
 # EX-NO-13-MESSAGE-AUTHENTICATION-CODE-MAC
-
+## NAME : HARISELVAN S
 ## AIM:
 To implement MESSAGE AUTHENTICATION CODE(MAC)
 
@@ -25,10 +25,30 @@ To implement MESSAGE AUTHENTICATION CODE(MAC)
 5. Security: The security of the MAC relies on the secret key \( K \) and the strength of the hash function \( H \), ensuring that an attacker cannot forge a valid MAC without knowledge of the key.
 
 ## Program:
-
-
-
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char key[50], msg[50], mac[50];
+    printf("Enter key: ");
+    scanf("%s", key);
+    printf("Enter message: ");
+    scanf("%s", msg);
+    int klen = strlen(key);
+    int mlen = strlen(msg);
+    for (int i = 0; i < mlen; i++) {
+        mac[i] = msg[i] ^ key[i % klen];
+    }
+    mac[mlen] = '\0';
+    printf("MAC: ");
+    for (int i = 0; i < mlen; i++) {
+        printf("%02x", (unsigned char)mac[i]);
+    }
+    return 0;
+}
+```
 ## Output:
+<img width="1913" height="949" alt="image" src="https://github.com/user-attachments/assets/4f67add9-a2d9-41ea-9467-61df9b9495c9" />
 
 
 ## Result:
